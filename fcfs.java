@@ -8,15 +8,15 @@ public class fcfs {
 
 		// declaracao de variaveis
 		Scanner sc = new Scanner(System.in);
-		int qtdProcessos, entrada, tempoAtual;
-		double tempoExecucao, tempoEspera, turnaround;
+		int qtdProcessos, tempoAtual;
+		double tempoExecucao, tempoEspera;
 		ArrayList processos, tempoChegada, tempoIngresso, tempoFinal, tempoInicial;
 		int teste = 0;
-		String formato, saida;
+		String formato, saida, strEntrada;
 		DecimalFormat decimal = new DecimalFormat("0.00");
 
-		System.out.println("Quantos processos deseja armazenar? ");
 		qtdProcessos = sc.nextInt();
+		sc.nextLine(); //limpar o buffer do teclado
 
 		while (qtdProcessos != 0) {
 			teste++;
@@ -27,15 +27,22 @@ public class fcfs {
 			tempoInicial = new ArrayList<>();
 			tempoEspera = 0;
 			tempoExecucao = 0;
-			turnaround = 0.0;
 
 			for (int i = 1; i <= qtdProcessos; i++) {
-				System.out.println("Qual o tempo de chegada do processo P" + i);
-				entrada = sc.nextInt();
-				tempoChegada.add(entrada);
-				System.out.println("Qual o burst do processo P" + i);
-				entrada = sc.nextInt();
-				tempoIngresso.add(entrada);
+//				System.out.println("Qual o tempo de chegada do processo P" + i);
+//				entrada = sc.nextInt();
+//				tempoChegada.add(entrada);
+//				System.out.println("Qual o burst do processo P" + i);
+//				entrada = sc.nextInt();
+//				tempoIngresso.add(entrada);				 
+				
+				strEntrada = sc.nextLine();
+				
+				int indiceEspaco = strEntrada.indexOf(" ");
+						
+				tempoChegada.add(Integer.parseInt(strEntrada.substring(0, indiceEspaco)));
+				tempoIngresso.add(Integer.parseInt(strEntrada.substring(indiceEspaco+1)));
+
 				processos.add(i);
 			}
 
@@ -54,18 +61,9 @@ public class fcfs {
 				tempoEspera += (int) tempoInicial.get(i) - (int) tempoChegada.get(i);
 			}
 
-			System.out.println("Processamento - PART" + teste);
-			System.out.println(".: ESCALONAMENTO FCFS :.");
+			System.out.println("\nTeste" + teste);
 
-			for (int i = 0; i < qtdProcessos; i++) {
-				turnaround = (int) tempoFinal.get(i) - (int) tempoInicial.get(i);
-				formato = decimal.format(turnaround);
-				saida = "|Turnaround| P" + i + ": " + formato + "ms";
-				saida = saida.replace(".", ",");
-				System.out.println(saida);
-			}
-
-			System.out.println("-------------------------------------------------");
+			// calcula o tempo medio de execução e tempo medio de espera
 			tempoExecucao = tempoExecucao / qtdProcessos;
 			tempoEspera = tempoEspera / qtdProcessos;
 
@@ -79,16 +77,17 @@ public class fcfs {
 			saida = saida.replace(".", ",");
 			System.out.println(saida);
 
-			System.out.println(" <-------- GRÁFICO DE GANTT ----------> ");
+			// gráfico de gantt
 			for (int i = 0; i < qtdProcessos; i++) {
 				System.out.print("P" + processos.get(i) + " ");
 			}
+
+			System.out.println("\n");
 			
-			System.out.println("\n\nQuantos processos deseja armazenar?");
-			qtdProcessos = sc.nextInt();
-			
+			strEntrada = sc.nextLine();
+			qtdProcessos = Integer.parseInt(strEntrada);
 		}
-		
+
 		sc.close();
 	}
 }

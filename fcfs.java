@@ -6,7 +6,7 @@ public class fcfs {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) {
 
-//		 declaração de variáveis
+//		declaração de variáveis
 		Scanner sc = new Scanner(System.in);
 		int qtdProcessos, tempoAtual;
 		double tempoExecucao, tempoEspera;
@@ -57,7 +57,7 @@ public class fcfs {
 
 			System.out.println("\nTeste" + teste);
 
-//			 calcula o tempo médio de execução e tempo médio de espera
+//			calcula o tempo médio de execução e tempo médio de espera
 			tempoExecucao = tempoExecucao / qtdProcessos;
 			tempoEspera = tempoEspera / qtdProcessos;
 
@@ -71,7 +71,7 @@ public class fcfs {
 			saida = saida.replace(".", ",");
 			System.out.println(saida);
 
-//			 gráfico de gantt
+//			gráfico de gantt
 			for (int i = 0; i < qtdProcessos; i++) {
 				System.out.print("P" + processos.get(i) + " ");
 			}

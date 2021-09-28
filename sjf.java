@@ -8,7 +8,7 @@ public class sjf {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-//		 declaração de variáveis
+//		declaração de variáveis
 		int qtdProcessos;
 		ArrayList processos, ingressos, duracoes, cpIngressos = new ArrayList();
 		int[] temposIniciais = new int[1], temposFinais = new int[1];
@@ -34,7 +34,7 @@ public class sjf {
 
 			for (int i = 0; i < qtdProcessos; i++) {
 
-				// lê e adiciona tempo de ingresso e o tempo de duração do processo
+//				 lê e adiciona tempo de ingresso e o tempo de duração do processo
 				strEntrada = sc.nextLine();
 
 				int indiceEspaco = strEntrada.indexOf(" ");
@@ -43,35 +43,32 @@ public class sjf {
 				duracoes.add(Integer.parseInt(strEntrada.substring(indiceEspaco + 1)));
 			}
 
-			// cria copia da lista de tempos de ingressos devido a modificacoes
+//			cria uma cópia da lista de tempos de ingressos devido as modificações
 			cpIngressos = (ArrayList) ingressos.clone();
 
 			int execucao;
 			int qteprocessos = qtdProcessos;
 
-			// tempo inicial = primeiro tempo da lista de ingressos
+//			tempo inicial = primeiro tempo da lista de ingressos
 			int tempoAtual = (int) ingressos.get(0);
 			while (qteprocessos > 0) {
 
-				// percorre ingressos para achar processos que ingressam nesse tempo
+//				percorre ingressos para achar processos que ingressam nesse tempo
 				processos = new ArrayList();
 				for (int i = 0; i < qtdProcessos; i++) {
 					if ((int) ingressos.get(i) != -1 && (int) ingressos.get(i) <= tempoAtual) {
-						// adicionar na lista de processos
+//						adicionar na lista de processos
 						processos.add(i);
 					}
 				}
 
-				// assumindo que o primeiro da lista eh o de menor duracao
 				if (processos.isEmpty()) {
 					tempoAtual++;
 				} else {
 					execucao = (int) processos.get(0);
 					for (int i = 0; i < processos.size(); i++) {
 						idProcessoAtual = (int) processos.get(i);
-//						 se a duração do processo atual for menor do que a menor duracao já encontrada
 						if ((int) duracoes.get(idProcessoAtual) < (int) duracoes.get(execucao)) {
-//							 então alteramos o processo que vai executar
 							execucao = (int) processos.get(i);
 						}
 					}
@@ -81,13 +78,11 @@ public class sjf {
 					temposFinais[execucao] = tempoAtual;
 					ingressos.set(execucao, -1);
 
-//					 define ordem de execução
 					ordemExecucao += "P" + (execucao + 1) + " ";
 					qteprocessos--;
 				}
 			}
 
-//			 calcula o tempo médio de execução e tempo médio de espera
 			tempoExecucao = 0;
 			tempoEspera = 0;
 			for (int i = 0; i < qtdProcessos; i++) {

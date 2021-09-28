@@ -6,7 +6,7 @@ public class fcfs {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) {
 
-		// declaracao de variaveis
+//		 declaração de variáveis
 		Scanner sc = new Scanner(System.in);
 		int qtdProcessos, tempoAtual;
 		double tempoExecucao, tempoEspera;
@@ -19,7 +19,7 @@ public class fcfs {
 		sc.nextLine();
 
 		while (qtdProcessos != 0) {
-			teste++;
+			teste++; // conta o número de testes
 			processos = new ArrayList<>();
 			tempoChegada = new ArrayList<>();
 			tempoIngresso = new ArrayList<>();
@@ -28,14 +28,14 @@ public class fcfs {
 			tempoEspera = 0;
 			tempoExecucao = 0;
 
-			for (int i = 1; i <= qtdProcessos; i++) {			 
-				
+			for (int i = 1; i <= qtdProcessos; i++) {
+
 				strEntrada = sc.nextLine();
-				
+
 				int indiceEspaco = strEntrada.indexOf(" ");
-						
+
 				tempoChegada.add(Integer.parseInt(strEntrada.substring(0, indiceEspaco)));
-				tempoIngresso.add(Integer.parseInt(strEntrada.substring(indiceEspaco+1)));
+				tempoIngresso.add(Integer.parseInt(strEntrada.substring(indiceEspaco + 1)));
 
 				processos.add(i);
 			}
@@ -57,7 +57,7 @@ public class fcfs {
 
 			System.out.println("\nTeste" + teste);
 
-			// calcula o tempo medio de execução e tempo medio de espera
+//			 calcula o tempo médio de execução e tempo médio de espera
 			tempoExecucao = tempoExecucao / qtdProcessos;
 			tempoEspera = tempoEspera / qtdProcessos;
 
@@ -71,13 +71,13 @@ public class fcfs {
 			saida = saida.replace(".", ",");
 			System.out.println(saida);
 
-			// gráfico de gantt
+//			 gráfico de gantt
 			for (int i = 0; i < qtdProcessos; i++) {
 				System.out.print("P" + processos.get(i) + " ");
 			}
 
 			System.out.println("\n");
-			
+
 			strEntrada = sc.nextLine();
 			qtdProcessos = Integer.parseInt(strEntrada);
 		}

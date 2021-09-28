@@ -16,7 +16,7 @@ public class fcfs {
 		DecimalFormat decimal = new DecimalFormat("0.00");
 
 		qtdProcessos = sc.nextInt();
-		sc.nextLine(); //limpar o buffer do teclado
+		sc.nextLine();
 
 		while (qtdProcessos != 0) {
 			teste++;
@@ -28,13 +28,7 @@ public class fcfs {
 			tempoEspera = 0;
 			tempoExecucao = 0;
 
-			for (int i = 1; i <= qtdProcessos; i++) {
-//				System.out.println("Qual o tempo de chegada do processo P" + i);
-//				entrada = sc.nextInt();
-//				tempoChegada.add(entrada);
-//				System.out.println("Qual o burst do processo P" + i);
-//				entrada = sc.nextInt();
-//				tempoIngresso.add(entrada);				 
+			for (int i = 1; i <= qtdProcessos; i++) {			 
 				
 				strEntrada = sc.nextLine();
 				
